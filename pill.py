@@ -2,7 +2,7 @@
 from tkinter import *
 from options import *
 
-def give_pill(symptoms=None):
+def give_pill():
     #pill count
     #add pills
     #pill information

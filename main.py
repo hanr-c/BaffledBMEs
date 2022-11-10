@@ -13,43 +13,43 @@ def show_app():
     root = Tk()
     root.running = True
     root.configure(bg="white")
-    print("here")
 
-    # frame = None
+    frame = None
+    frame = Frame(root, bg="gray", relief=RAISED, borderwidth=1)
+    frame.grid(row=1, column=1, rowspan=3, columnspan=3)
+    frame_label = Label(root, text = "Baffled BMEs Pill Dispenser",font = medium_font)
+    frame_label.grid(row=0, column=0)
 
-    def closing():
+
+
+    def on_exit():
         root.running = False
-        app_frame.exit()
-        print("closing")
-    root.protocol("WM_DELETE_WINDOW", closing)
+        # save data
+    root.protocol("WM_DELETE_WINDOW", on_exit)
 
 
-    def give_pill(symptoms = None):
+    def on_pill():
         #checklist variables go into paranthesis
         # activate motors to give neccessary pills from the checklist
-        print("here")
+        give_pill()
 
 
     def give_options():
         show_options()
 
-    def on_exit():
-        #save all data
-        print("closing 2")
-        root.running = False
 
-    app_frame = Frame(root, bg="gray")
 
     options_button = Button(root, text="Options", command=give_options, bg="white", font= medium_font)
-    options_button.grid(row=3, column=0)
+    options_button.grid(row=3, column=0, padx = 10, pady =10)
 
-    pill_button = Button(root, text="Give Pill", command=give_pill, bg="white", font= medium_font)
-    pill_button.grid(row=3, column=3)
+    pill_button = Button(root, text="Give Pill", command=on_pill, bg="white", font= medium_font)
+    pill_button.grid(row=3, column=3, padx = 10, pady =10)
 
-    root.mainloop()
 
-    print("here 2")
-    
+    while root.running:
+        root.update()
+    root.destroy()
+     
 
 
 if __name__ == "__main__":
