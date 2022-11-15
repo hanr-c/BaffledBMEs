@@ -1,8 +1,9 @@
 
 from tkinter import *
 from options import *
+#from main import recall
 
-def give_pill(symptoms=None):
+def give_pill():
     #pill count
     #add pills
     #pill information
@@ -25,6 +26,8 @@ def give_pill(symptoms=None):
 
     cancel_button = Button(root, text= "Cancel", command= on_exit)
     cancel_button.grid(row=2, column= 1)
+
+    #recall()
 
     while root.running:
         root.update()

@@ -8,7 +8,7 @@ api_key= '83282F6C-1318-A031-7DD5-DE73ECC94486'
 toNum= '+12817866186'
 fromNum= ''
 
-message= 'This is a test message'
+message= 'sup spencer'
 
 import json, subprocess
 
