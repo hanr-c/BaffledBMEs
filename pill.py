@@ -3,7 +3,7 @@ from tkinter import *
 from options import *
 #from main import recall
 
-def give_pill():
+def give_pill(sym1,sym2,sym3):
     #pill count
     #add pills
     #pill information
@@ -18,6 +18,21 @@ def give_pill():
     title_label = Label(root, text="Please wait, medicine dispensing", bg="white", font=large_font)
     title_label.grid(row=0, column=0)
 
+    def diagnose(sym1,sym2,sym3):
+        print(sym1,sym2,sym3)
+
+        if sym1 == 1:
+            print("a pill")
+        elif sym2 ==1:
+            print("b pill")
+        elif sym3 ==1:
+            print("b pill")
+        else:
+            print("check prescription")    
+
+
+
+
     def on_exit():
         root.running = False
 
@@ -26,8 +41,7 @@ def give_pill():
 
     cancel_button = Button(root, text= "Cancel", command= on_exit)
     cancel_button.grid(row=2, column= 1)
-
-    #recall()
+    diagnose(sym1,sym2,sym3)
 
     while root.running:
         root.update()
