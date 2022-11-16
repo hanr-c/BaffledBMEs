@@ -31,25 +31,25 @@ def show_app():
     root.protocol("WM_DELETE_WINDOW", on_exit)
 
 
-    def on_pill():
+    def on_pill(s1,s2,s3):
         #checklist variables go into paranthesis
         # activate motors to give neccessary pills from the checklist
-        give_pill()
+        give_pill(s1,s2,s3)
 
 
     def give_options():
         show_options()
 
     def store_syms():
-        
-        symptoms = [
-         sym_1.get(), 
-         sym_2.get(),
-         sym_3.get(),
-         sym_4.get()
-         ]
-        print(symptoms)
+        global s1
+        global s2
+        global s3
+        s1= sym_1.get()
+        s2 =sym_2.get()
+        s3 =sym_3.get()
+        print(s1,s2,s3)
          #somehow through that to give_pill
+
 
     def recall():
         #if symptom pill taken
@@ -64,17 +64,10 @@ def show_app():
         warning_text.grid(row=4, column=0)
 
 
-
-    options_button = Button(root, text="Options", command=give_options, bg="white", font= medium_font)
-    options_button.grid(row=5, column=0, padx = 10, pady =10)
-
-    pill_button = Button(root, text="Give Pill", command=on_pill, bg="white", font= medium_font)
-    pill_button.grid(row=5, column=3, padx = 10, pady =10)
-
     sym_1 = IntVar()
     sym_2 = IntVar()
     sym_3= IntVar()
-    sym_4 = IntVar()
+
     timesym = StringVar()
     timesym = "Benadryl: 08:30 ago"
     timepres = StringVar()
@@ -82,14 +75,12 @@ def show_app():
     
     sym_label = Label(root, text = "Symptoms:",font = medium_font, bg="white")
     sym_label.grid(row=0, column=3)
-    sym1 = Checkbutton(root, text = "Headache", variable =sym_1, onvalue= 1, offvalue= 0, command=store_syms, bg="white" )
+    sym1 = Checkbutton(root, text = "Headache", variable =sym_1, onvalue= 1, offvalue= 0, command=store_syms(), bg="white" )
     sym1.grid(row= 1, column = 3, padx = 5, pady =5)
-    sym2 = Checkbutton(root, text = "Sickness", variable =sym_2, onvalue= 1, offvalue= 0, command=store_syms, bg="white" )
+    sym2 = Checkbutton(root, text = "Sickness", variable =sym_2, onvalue= 1, offvalue= 0,  command=store_syms(), bg="white" )
     sym2.grid(row = 2, column = 3, padx = 5, pady =5)
-    sym3 = Checkbutton(root, text = "Pain", variable =sym_3, onvalue= 1, offvalue= 0, command=store_syms, bg="white" )
+    sym3 = Checkbutton(root, text = "Pain", variable =sym_3, onvalue= 1, offvalue= 0,  command=store_syms(),bg="white" )
     sym3.grid(row = 3, column = 3, padx = 5, pady =5)
-    sym4 = Checkbutton(root, text = "Other", variable =sym_4, onvalue= 1, offvalue= 0, command=store_syms, bg="white" )
-    sym4.grid(row = 4, column = 3, padx = 5, pady =5)
 
     text = Text(root)
 
@@ -103,7 +94,11 @@ def show_app():
     pre_recall_text = Label(root, text= timepres, font= medium_font, bg="white")
     pre_recall_text.grid(row =3, column=1,)
 
+    options_button = Button(root, text="Options", command=give_options, bg="white", font= medium_font)
+    options_button.grid(row=5, column=0, padx = 10, pady =10)
 
+    pill_button = Button(root, text="Give Pill", bg="white",command=on_pill(s1,s2,s3), font= medium_font)
+    pill_button.grid(row=5, column=3, padx = 10, pady =10)
 
     while root.running:
         root.update()
